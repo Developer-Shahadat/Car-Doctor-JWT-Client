@@ -1,11 +1,17 @@
 import React from "react";
-import logo  from "../../../assets/logo.svg"
+import logo from "../../../assets/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 const NavBar = () => {
-    const navItems = <>
-    <li to="/"><Link>Home</Link></li>
-    <li to="/about"><Link>About</Link></li>
+  const navItems = (
+    <>
+      <li to="/">
+        <Link>Home</Link>
+      </li>
+      <li to="/about">
+        <Link>About</Link>
+      </li>
     </>
+  );
   return (
     <div className="navbar bg-base-100 h-28 mb-4">
       <div className="navbar-start">
@@ -30,20 +36,18 @@ const NavBar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-           {navItems}
+            {navItems}
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost text-xl">
-            <img src={logo} alt="" />
+        <Link to="/" className="btn btn-ghost text-xl">
+          <img src={logo} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {navItems}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a className="btn btn-outline  text-[#FF3811]">Appointment</a>
       </div>
     </div>
   );
