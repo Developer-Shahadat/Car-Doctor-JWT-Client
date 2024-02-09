@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
-    createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -18,6 +18,12 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -33,6 +39,7 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     createUser,
+    signIn
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
