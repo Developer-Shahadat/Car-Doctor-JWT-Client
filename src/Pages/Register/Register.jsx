@@ -17,7 +17,9 @@ const Register = () => {
         const user = result.user;
         console.log(user);
       })
-      .then((error) => {console.log(error)});
+      .then((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="hero min-h-screen ">
