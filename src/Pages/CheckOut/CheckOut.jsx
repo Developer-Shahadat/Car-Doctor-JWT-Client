@@ -8,8 +8,6 @@ const CheckOut = () => {
   const { title, price, _id, img } = services;
   const { user } = useContext(AuthContext);
 
-
-
   const handleOrder = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -33,15 +31,15 @@ const CheckOut = () => {
       },
       body: JSON.stringify(order),
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        if(data.insertId){
-            Swal.fire({
-                title: "Good job!",
-                text: "You clicked the button!",
-                icon: "success"
-              });
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Order Added!",
+            icon: "success",
+          });
         }
       });
   };
