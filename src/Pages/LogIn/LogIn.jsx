@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import logInImg from "../../../src/assets/images/login/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 const LogIn = () => {
   const { signIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,6 +17,7 @@ const LogIn = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(location?.state? location?.state : '/');
       })
       .then((error) => {
         console.log(error);
