@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import OrderRow from "./OrderRow";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const OrderDetails = () => {
   const { user } = useContext(AuthContext);
@@ -9,9 +10,13 @@ const OrderDetails = () => {
 
   const url = `http://localhost:5000/orders?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setOrder(data));
+    axios.get(url, { withCredentials: true })
+    .then((res) => {
+      setOrder(res.data);
+    });
+    // fetch(url,)
+    //   .then((res) => res.json())
+    //   .then((data) => setOrder(data));
   }, [url]);
   const handleDelete = (id) => {
     // const procced =
